@@ -29,11 +29,14 @@ formulario.addEventListener('submit', function(e){
             //concatena as informações Nome: + resultado da api data.name + quebra linha
             html = 'Nome: ' + upperCase(data.name) + '<br>'
             //concatena a parte nome pokemon + concatenação do tipo
-            html = html + 'Type: ' + upperCase(data.types[0].type.name)
+            html = html + 'Primary Type: ' + upperCase(data.types[0].type.name) + '<br>'
+
+            html = html + 'Secondary Type: ' + upperCase(data.types[1].type.name)
             //insere essas informações em uma representação html
             resposta.innerHTML = html
+            imagem.innerHTML = "<img src='" + data.sprites.front_default + "'><img src='"+ data.sprites.back_default +"'>"
 
-            imagem.innerHTML = "<img src='" + data.sprites.front_default + "'><img src='"+ data.sprites.front_default +"'>"
+            html = ""
         })
         .catch(function(err){
             if(err == 'SyntaxError: Unexpected token N in JSON at position 0'){
